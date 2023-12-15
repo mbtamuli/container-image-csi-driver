@@ -20,6 +20,12 @@ jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
+      # For debuggging
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
       - name: Checkout repository
         uses: actions/checkout@v4
 
