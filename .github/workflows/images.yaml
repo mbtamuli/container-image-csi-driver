@@ -8,11 +8,13 @@ on:
 env:
   # For merging to warmmetal
   #BASE_REPOSITORY: warmmetal/csi-driver-image
+  #BASE_DEFAULT_BRANCH: master
   #BASE_IMAGE_NAME: warmmetal/csi-image
   #FORK_IMAGE_NAME: ghcr.io/${{ github.repository }}
 
   # To do extended tests via my personal repo - mbtamuli/csi-driver-image
   BASE_REPOSITORY: mbtamuli/csi-driver-image
+  BASE_DEFAULT_BRANCH: v1
   BASE_IMAGE_NAME: mbtamuli/csi-image
   FORK_IMAGE_NAME: ghcr.io/${{ github.repository }}
 
@@ -58,7 +60,7 @@ jobs:
             type=semver,pattern={{version}}
             # set the image tag based on the branch
             # https://github.com/docker/metadata-action/issues/247#issuecomment-1511259674
-            type=ref,event=branch,enable={{#if is_default_branch}}false{{else}}true{{/if}}
+            type=ref,event=branch,enable=${{ github.ref_name != env.BASE_DEFAULT_BRANCH }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
