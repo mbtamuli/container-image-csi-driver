@@ -34,6 +34,7 @@ jobs:
           images: |
             ${{ github.repository == 'warm-metal/csi-driver-image' && 'warmmetal/csi-image' || format('ghcr.io/{0}', github.repository) }}
           tags: |
+            type=ref,event=branch
             # set latest tag for default branch
             type=raw,value=latest,enable={{is_default_branch}}
             # set image tag based on GitHub release tag
