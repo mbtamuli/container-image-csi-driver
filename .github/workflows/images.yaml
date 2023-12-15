@@ -57,7 +57,8 @@ jobs:
             # set image tag based on GitHub release tag
             type=semver,pattern={{version}}
             # set the image tag based on the branch
-            type=ref,event=branch
+            # https://github.com/docker/metadata-action/issues/247#issuecomment-1511259674
+            type=ref,event=branch,enable={{#if is_default_branch}}false{{else}}true{{/if}}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
