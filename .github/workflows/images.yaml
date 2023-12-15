@@ -32,7 +32,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ github.repository == 'warm-metal/csi-driver-image' && 'warmmetal/csi-image' || format('ghcr.io/{0}', github.repository) }}
+            name=warmmetal/csi-image,enable=${{ github.repository == 'warm-metal/csi-driver-image' }}
+            name=ghcr.io/${{ github.repository }},enable=${{ github.repository != 'warm-metal/csi-driver-image' }}
           tags: |
             type=ref,event=branch
             # set latest tag for default branch
