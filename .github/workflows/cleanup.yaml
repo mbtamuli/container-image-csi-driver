@@ -1,0 +1,29 @@
+name: Delete old container images
+
+on:
+  schedule:
+    - cron: "0 0 * * *"  # every day at midnight
+
+env:
+  # For merging to warmmetal
+  #BASE_REPOSITORY: warmmetal/csi-driver-image
+
+  # To do extended tests via my personal repo - mbtamuli/csi-driver-image
+  BASE_REPOSITORY: mbtamuli/csi-driver-image
+
+jobs:
+  clean-ghcr:
+    name: Delete old unused container images
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete 'dev' containers older than a week
+        uses: snok/container-retention-policy@v2
+        if: github.repository != env.BASE_REPOSITORY
+        with:
+          image-names: ghcr.io/${{ github.repository }}
+          cut-off: A week ago UTC
+          account-type: personal
+          keep-at-least: 1
+          skip-tags: latest, v*
+          token: ${{ secrets.GITHUB_TOKEN }}
+          token-type: github-token
