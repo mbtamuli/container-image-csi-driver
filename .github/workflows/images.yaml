@@ -14,7 +14,7 @@ env:
 
   # To do extended tests via my personal repo - mbtamuli/csi-driver-image
   BASE_REPOSITORY: mbtamuli/csi-driver-image
-  BASE_DEFAULT_BRANCH: v1
+  BASE_DEFAULT_BRANCH: feat/images-for-forks
   BASE_IMAGE_NAME: mbtamuli/csi-image
   FORK_IMAGE_NAME: ghcr.io/${{ github.repository }}
 
