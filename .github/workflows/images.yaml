@@ -6,15 +6,27 @@ on:
     tags:
 
 env:
-  BASE_REPOSITORY: warmmetal/csi-driver-image
-  BASE_DEFAULT_BRANCH: master
-  BASE_IMAGE_NAME: warmmetal/csi-image
+  # For merging to warmmetal
+  #BASE_REPOSITORY: warmmetal/csi-driver-image
+  #BASE_DEFAULT_BRANCH: master
+  #BASE_IMAGE_NAME: warmmetal/csi-image
+  #FORK_IMAGE_NAME: ghcr.io/${{ github.repository }}
+
+  # To do extended tests via my personal repo - mbtamuli/csi-driver-image
+  BASE_REPOSITORY: mbtamuli/csi-driver-image
+  BASE_DEFAULT_BRANCH: v1
+  BASE_IMAGE_NAME: mbtamuli/csi-image
   FORK_IMAGE_NAME: ghcr.io/${{ github.repository }}
 
 jobs:
   build-and-push-image:
     runs-on: ubuntu-latest
     steps:
+      # For debuggging
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
 
       - name: Checkout repository
         uses: actions/checkout@v4
