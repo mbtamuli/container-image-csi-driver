@@ -16,14 +16,12 @@ jobs:
     name: Delete old unused container images
     runs-on: ubuntu-latest
     steps:
-      - name: Delete 'dev' containers older than a week
-        uses: snok/container-retention-policy@v2
+      - uses: actions/delete-package-versions@v4
         if: github.repository != env.BASE_REPOSITORY
         with:
-          image-names: ghcr.io/${{ github.repository }}
-          cut-off: A week ago UTC
-          account-type: personal
-          keep-at-least: 1
-          skip-tags: latest, v*
-          token: ${{ secrets.GITHUB_TOKEN }}
-          token-type: github-token
+          package-name: ${{ github.repository }}
+          package-type: 'container'
+          min-versions-to-keep: 1
+          # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+          # Ignore any semver or 'latest'
+          ignore-versions: '^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?|latest$'
