@@ -62,7 +62,7 @@ jobs:
             # https://github.com/docker/metadata-action/issues/247#issuecomment-1511259674
             type=ref,event=branch,enable=${{ github.ref_name != env.BASE_DEFAULT_BRANCH }}
           flavor: |
-            latest: false
+            latest=false
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
