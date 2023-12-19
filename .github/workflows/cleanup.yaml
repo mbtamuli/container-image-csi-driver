@@ -24,7 +24,7 @@ jobs:
         if: github.repository != env.BASE_REPOSITORY
         with:
           owner: ${{ github.repository_owner }}
-          package-name: ghcr.io/${{ github.repository }}
+          package-name: ${{ github.event.repository.name }}
           package-type: 'container'
           min-versions-to-keep: 1
           # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
