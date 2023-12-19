@@ -57,7 +57,7 @@ jobs:
             # set 'latest' tag for default branch
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', env.BASE_DEFAULT_BRANCH) }}
             # set image tag based on GitHub release tag
-            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},prefix=v
             # set the image tag based on the branch
             # https://github.com/docker/metadata-action/issues/247#issuecomment-1511259674
             type=ref,event=branch,enable=${{ github.ref_name != env.BASE_DEFAULT_BRANCH }}
