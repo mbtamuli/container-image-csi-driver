@@ -2,7 +2,7 @@ name: Delete old container images
 
 on:
   schedule:
-    - cron: "*/15 * * * *"  # every 15 minutes @ https://crontab.guru/every-15-minutes
+    - cron: "*/5 * * * *"  # every 15 minutes @ https://crontab.guru/every-5-minutes
 
 env:
   # For merging to warmmetal
