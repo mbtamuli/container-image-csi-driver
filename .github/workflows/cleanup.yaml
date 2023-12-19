@@ -5,10 +5,6 @@ on:
     - cron: "*/5 * * * *"  # every 15 minutes @ https://crontab.guru/every-5-minutes
   workflow_dispatch:
 
-permissions:
-  packages: write
-  actions: read
-
 env:
   # For merging to warmmetal
   BASE_REPOSITORY: warmmetal/csi-driver-image
