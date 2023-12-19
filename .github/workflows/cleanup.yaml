@@ -23,6 +23,7 @@ jobs:
       - uses: actions/delete-package-versions@v4
         if: github.repository != env.BASE_REPOSITORY
         with:
+          owner: ${{ github.repository_owner }}
           package-name: ghcr.io/${{ github.repository }}
           package-type: 'container'
           min-versions-to-keep: 1
