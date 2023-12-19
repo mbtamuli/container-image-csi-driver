@@ -54,7 +54,7 @@ jobs:
             name=${{ env.BASE_IMAGE_NAME }},enable=${{ github.repository == env.BASE_REPOSITORY }}
             name=${{ env.FORK_IMAGE_NAME }},enable=${{ github.repository != env.BASE_REPOSITORY }}
           tags: |
-            # set latest tag for default branch
+            # set 'latest' tag for default branch
             type=raw,value=latest,enable=${{ github.ref == format('refs/heads/{0}', env.BASE_DEFAULT_BRANCH) }}
             # set image tag based on GitHub release tag
             type=semver,pattern={{version}}
