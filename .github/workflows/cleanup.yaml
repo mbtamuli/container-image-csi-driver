@@ -7,6 +7,7 @@ on:
 
 permissions:
   packages: write
+  actions: read
 
 env:
   # For merging to warmmetal
@@ -20,6 +21,9 @@ jobs:
     name: Delete old unused container images
     runs-on: ubuntu-latest
     steps:
+      - uses: GitHubSecurityLab/actions-permissions/monitor@v1
+        with:
+          config: ${{ vars.PERMISSIONS_CONFIG }}
       - uses: actions/delete-package-versions@v4
         if: github.repository != env.BASE_REPOSITORY
         with:
