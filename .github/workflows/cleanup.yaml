@@ -8,10 +8,10 @@ permissions:
 
 env:
   # For merging to warmmetal
-  BASE_REPOSITORY: warmmetal/csi-driver-image
+  #BASE_REPOSITORY: warmmetal/csi-driver-image
 
   # To do extended tests via my personal repo - mbtamuli/csi-driver-image
-  #BASE_REPOSITORY: mbtamuli/csi-driver-image
+  BASE_REPOSITORY: mbtamuli/csi-driver-image
 
 jobs:
   clean-ghcr:
