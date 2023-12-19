@@ -1,7 +1,8 @@
 name: Delete old container images
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * *"  # Source: https://crontab.guru/every-day
 
 permissions:
   packages: write
