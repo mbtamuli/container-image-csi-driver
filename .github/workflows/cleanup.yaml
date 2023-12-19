@@ -19,7 +19,7 @@ jobs:
       - uses: actions/delete-package-versions@v4
         if: github.repository != env.BASE_REPOSITORY
         with:
-          package-name: ${{ github.repository }}
+          package-name: ghcr.io/${{ github.repository }}
           package-type: 'container'
           min-versions-to-keep: 1
           # https://semver.org/#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
