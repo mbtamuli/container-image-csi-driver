@@ -1,6 +1,6 @@
 name: Dev Container Build and Push Image
 
-on: [pull_requests]
+on: [pull_request]
 
 jobs:
   build-and-push-image:
