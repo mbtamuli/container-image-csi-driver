@@ -35,6 +35,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pre-build dev container image
         uses: devcontainers/ci@v0.3.1900000339
+        env:
+          BUILDX_NO_DEFAULT_ATTESTATIONS: true
         with:
           subFolder: .github
           imageName: ghcr.io/${{ github.repository }}/devcontainer
