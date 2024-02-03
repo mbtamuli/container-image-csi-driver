@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
+        with:
+          platforms: linux/amd64,linux/arm64
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
       - name: Log in to the GitHub Container registry
@@ -32,7 +34,7 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Pre-build dev container image
-        uses: devcontainers/ci@v0.3
+        uses: devcontainers/ci@v0.3.1900000339
         with:
           subFolder: .github
           imageName: ghcr.io/${{ github.repository }}/devcontainer
