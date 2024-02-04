@@ -1,11 +1,11 @@
 // For format details, see https://containers.dev
 {
 	"name": "csi-driver-image dev container",
-	"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-	//"build": {
-	//	"dockerfile": "./Dockerfile",
-	//	"context": "."
-	//},
+	//"image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+	"build": {
+		"dockerfile": "./Dockerfile",
+		"context": "."
+	},
 	"otherPortsAttributes": {
 		"onAutoForward": "silent"
 	},
