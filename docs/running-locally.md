@@ -3,7 +3,7 @@
 You have two options:
 
 1. Use the [Dev Container](#development-container). This is the recommended approach. This can be used with VSCode, the `devcontainer` CLI, or GitHub Codespaces.
-1. Install the [requirements](#requirements) on your computer manually.
+1. Install the [requirements](#requirements) on your computer manually. Once you have installed all the requirements, continue to [Developing Locally](#developing-locally).
 
 ## Development Container
 
@@ -22,13 +22,13 @@ Once you have entered the container, continue to [Developing Locally](#developin
 To build on your own machine without using the Dev Container you will need:
 
 * A local clone of this repository.
-* [Go](https://golang.org/dl/)
+* [Go](https://golang.org/dl/) - v1.19
 * A local Kubernetes cluster ([`k3d`](https://k3d.io/#quick-start), [`kind`](https://kind.sigs.k8s.io/docs/user/quick-start/#installation), or [`minikube`](https://minikube.sigs.k8s.io/docs/start/))
 * [`helm`](https://helm.sh/docs/intro/install/)
 
 ## Developing locally
 
-_**Note:** Unless specified otherwise, you need to run all commands after changing your working directory to this repository - `cd /path/to/container-image-csi-driver-repository`_
+_**Note:** Unless specified otherwise, you need to run all commands after changing your working directory to this repository, e.g. - `cd /path/to/container-image-csi-driver-repository`_
 
 1. First, make sure you can connect to the Kubernetes cluster by following the quickstart guide of your chosen local Kubernetes cluster provider.
   ```
@@ -47,3 +47,16 @@ _**Note:** Unless specified otherwise, you need to run all commands after changi
   ```bash
   kubectl create -f sample/ephemeral-volume.yaml
   ```
+
+### Running E2E tests locally
+
+#### Running One Test
+In most cases, you want to run the test that relates to your changes locally. You should not run all the tests suites. Our CI will run those concurrently when you create a PR, which will give you feedback much faster.
+
+Find the test that you want to run in test/e2e
+
+```
+make TestArtifactServer
+```
+
+#### Running A Set Of Tests
